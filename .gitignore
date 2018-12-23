@@ -58,3 +58,7 @@ Temporary Items
 ### Ansible ###
 *.retry
 
+### VIM ###
+*.swo
+*.swp
+

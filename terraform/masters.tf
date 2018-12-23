@@ -2,11 +2,11 @@
 # K8s Control Pane instances
 ############################
 
-resource "aws_instance" "controller" {
+resource "aws_instance" "master" {
 
     count = 3
     ami = "${lookup(var.amis, var.region)}"
-    instance_type = "${var.controller_instance_type}"
+    instance_type = "${var.master_instance_type}"
 
     iam_instance_profile = "${aws_iam_instance_profile.kubernetes.id}"
 
@@ -21,10 +21,10 @@ resource "aws_instance" "controller" {
 
     tags {
       Owner = "${var.owner}"
-      Name = "controller-${count.index}"
+      Name = "master-${count.index}"
       ansibleFilter = "${var.ansibleFilter}"
-      ansibleNodeType = "controller"
-      ansibleNodeName = "controller${count.index}"
+      ansibleNodeType = "master"
+      ansibleNodeName = "master${count.index}"
     }
 }
 
@@ -34,7 +34,7 @@ resource "aws_instance" "controller" {
 
 resource "aws_elb" "kubernetes_api" {
     name = "${var.elb_name}"
-    instances = ["${aws_instance.controller.*.id}"]
+    instances = ["${aws_instance.master.*.id}"]
     subnets = ["${aws_subnet.kubernetes.id}"]
     cross_zone_load_balancing = false
 

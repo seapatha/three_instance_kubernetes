@@ -1,3 +1,30 @@
+# Three Instance Kubernetes Cluster
+
+This project aims to provide a hello world on a three-instance Kubernetes cluster established with Terraform and configured with Ansible.
+
+As a derived work, this project builds on prior art in the field, namely [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) and its automated equvivalent [Kubernetes Not the Hardest Way](https://opencredo.com/kubernetes-aws-terraform-ansible-1/).  Please consider the relevant copying and licensing information in [LICENSE.md].
+
+# Installation, Usage, and Release Notes
+
+- Installation instructions can be found at [INSTALL.md].
+- Usage instructions can be found at [USAGE.md].
+- Release Notes can be found at [RELEASENOTES.md].
+
+
+
+
+
+- AWS VPC
+- 3 EC2 instances for HA Kubernetes Control Plane: Kubernetes API, Scheduler and Controller Manager
+- 3 EC2 instances for *etcd* cluster
+- 3 EC2 instances as Kubernetes Workers (aka Minions or Nodes)
+- Kubenet Pod networking (using CNI)
+- HTTPS between components and control API
+- Sample *nginx* service deployed to check everything works
+
+*This is a learning tool, not a production-ready setup.*
+
+
 # Kubernetes not the hardest way (or "Provisioning a Kubernetes Cluster on AWS using Terraform and Ansible")
 
 A worked example to provision a Kubernetes cluster on AWS from scratch, using Terraform and Ansible. A scripted version of the famous tutorial [Kubernetes the hard way](https://github.com/kelseyhightower/kubernetes-the-hard-way).
