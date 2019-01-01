@@ -20,23 +20,23 @@
 - name: Download etcd binaries
   get_url:
     url: "{{ etcd_download_url }}"
-    dest: "/usr/local/src"
+    dest: "/tmp"
     # TODO Add hash check
   become: true
 
 - name: Unpack etcd binaries
   unarchive:
     copy: no
-    src: "/usr/local/src/{{ etcd_release }}.tar.gz"
-    dest: "/usr/local/src/"
-    creates: "/usr/local/src/{{ etcd_release }}/etcd"
+    src: "/tmp/{{ etcd_release }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/{{ etcd_release }}/etcd"
   become: true
 
 - name: Copy etcd binaries
   copy:
     remote_src: true
-    src: "/usr/local/src/{{ etcd_release }}/{{ item }}"
-    dest: "/usr/bin"
+    src: "/tmp/{{ etcd_release }}/{{ item }}"
+    dest: "/home/core/bin"
     owner: root
     group: root
     mode: 0755

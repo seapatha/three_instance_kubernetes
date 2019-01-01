@@ -25,10 +25,10 @@
 # Kubernetes
 #############
 
-- name: Download Kuberneters controller binaries
+- name: Download Kubernetes controller binaries
   get_url:
     url: "{{ kubernetes_download_path }}/{{ item }}"
-    dest: /usr/bin
+    dest: /home/core/bin
     owner: root
     group: root
     mode: 0755
@@ -87,7 +87,7 @@
   become: true
 
 - name: Verify Kubernetes status
-  shell: kubectl get componentstatuses
+  shell: /home/core/bin/kubectl get componentstatuses
   register: cmd_result
   retries: 5
   delay: 10

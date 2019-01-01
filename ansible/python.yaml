@@ -1,0 +1,24 @@
+---
+# Python installation on CoreOS
+- hosts: all
+  gather_facts: no
+  tasks: 
+     - name: Setup Python on CoreOS servers
+       args: 
+         executable: /bin/bash
+       raw: |
+         PYPY_VERSION=5.10.1
+         wget -O - https://bitbucket.org/pypy/pypy/downloads/pypy3-v$PYPY_VERSION-linux64.tar.bz2 |tar -xjf -
+         mv -n pypy3-v$PYPY_VERSION-linux64 pypy
+         mkdir -p pypy/lib
+         if [[ -f /lib64/libncurses.so.5.9 ]]; then
+                libncurses_version=5.9
+         else
+                libncurses_version=6
+         fi
+         ln -snf /lib64/libncurses.so.$libncurses_version $HOME/pypy/lib/libtinfo.so.5
+         mkdir -p $HOME/bin
+         echo LD_LIBRARY_PATH=$HOME/pypy/lib:$LD_LIBRARY_PATH exec $HOME/pypy/bin/pypy3 "\$@" > $HOME/bin/python
+         chmod +x $HOME/bin/python
+         $HOME/bin/python --version
+       ignore_errors: True

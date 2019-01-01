@@ -1,9 +1,9 @@
 /* Required variables */
-default_keypair_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2XFn/bOG6Jm3nJ0dBbqvYlzdGNUIqVMjkAwiwQ9EoR7JZH/UKBNS8sRo/4DV4mw56E7cvEEqdCL3Xg1R+IJtGgiHSRD1jTvokEq6tv6uh8yQKukogeQRpdD6sCGj73kmglVGk0TsVnGMc3og8JnlpzoQSlOQ0uz/h6ESkttI0pabQC3vKkJXGUuOdSjz/u3RD9qxNz4pbWLmdR5Jc/V35XYYHHDt3UgqIZVPtBhgyKJ6h8ORg1gqRmF8C250Ob1i7kxGmPWbTa/BWbI45AEau9WeCzz1gpwa3q+gezuBRrSnaKCvollM0XkJhQsbEMnnv9cugw4BPw40ejzVNaw3D"
+default_keypair_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrHMCPBSgimxzV4b33gSxguxKEAHVZKjAhVMI+GGO6W0xMd45YeFc06wa+B9BtytqSPFx6H/vu6R2ULHpDp9sGjIjcN0TXUmomst0syp+RzDBGPQs4K1c3I9NQcCUrT4f6KGQqQBcp79xQ68FSNN1ZUXUC/MB+mJ6PCsTdH53XCslXdL1hkvxu47GreWMzOho4SInPx6x2OyAHuMAKQV/Q+HMYmtp6qZdCcTojYQdO6cmpm5fRfaJdWC4cXzcv0a3AprkvHWs/LwXgzmo6WTLPP3TBTIGTCkV+ffoNrJCzdhGSA5K8JzEEWEf9XNsw126tol7H0qhcKQxeQ+rYu4TL"
 
 /* CIDR that has access to k8s API */
 /* DEFAULT IS MASSIVELY INSECURE, PLEASE TIGHTEN */
-control_cidr = "0.0.0.0/32"
+control_cidr = "0.0.0.0/0"
 
 /* Optional. Set as desired */
 region = "us-west-2"
@@ -17,4 +17,4 @@ zone = "us-west-2b"
 
 /* following AMI is from https://coreos.com/os/docs/latest/booting-on-ec2.html */
 
-amis = { us-west-2 = "ami-0016c65679adc75f5" }
+amis = { us-west-2 = "ami-0b5fe761216cc15dd" }

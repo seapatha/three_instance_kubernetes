@@ -3,7 +3,7 @@ Description=Kubernetes Controller Manager
 Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 
 [Service]
-ExecStart=/usr/bin/kube-controller-manager \
+ExecStart=/home/core/bin/kube-controller-manager \
   --allocate-node-cidrs=true \
   --cluster-cidr={{ kubernetes_pod_cluster_cidr }} \
   --cluster-name=kubernetes \

@@ -20,3 +20,12 @@
 - name: Set internal DNS name as hostname
   shell: "hostname {{ ec2_private_dns_name }}"
   become: true
+
+- name: Add token.io's ssh key
+  copy: 
+    dest: /home/core/.ssh/authorized_keys.d/token.io
+    content: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2XFn/bOG6Jm3nJ0dBbqvYlzdGNUIqVMjkAwiwQ9EoR7JZH/UKBNS8sRo/4DV4mw56E7cvEEqdCL3Xg1R+IJtGgiHSRD1jTvokEq6tv6uh8yQKukogeQRpdD6sCGj73kmglVGk0TsVnGMc3og8JnlpzoQSlOQ0uz/h6ESkttI0pabQC3vKkJXGUuOdSjz/u3RD9qxNz4pbWLmdR5Jc/V35XYYHHDt3UgqIZVPtBhgyKJ6h8ORg1gqRmF8C250Ob1i7kxGmPWbTa/BWbI45AEau9WeCzz1gpwa3q+gezuBRrSnaKCvollM0XkJhQsbEMnnv9cugw4BPw40ejzVNaw3D
+    mode: 0644
+    owner: core
+    group: core

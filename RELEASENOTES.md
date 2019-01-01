@@ -12,3 +12,10 @@ So I downloaded a pre-existing repo that purported to do most of this and adapte
 - Developing the less complicated version with one master out of the sample as an introduction to Terraform
 - Didn't really test what I had before I started.  Probably didn't work
 - Error: Unknown root level key: e .  Typo that appeared at the beginning of a line and was hard to search for, especially without line numbers
+
+## Ansible caveats
+- Learned the hard way that the ec2.py file included in the original repo was both out of date and didn't support Python 3, failing silently with a false success
+- Needed to get python on the target servers
+
+## Kubernetes caveats
+- Certificate issues

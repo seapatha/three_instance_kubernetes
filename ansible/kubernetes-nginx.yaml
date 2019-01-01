@@ -13,8 +13,8 @@
 
   tasks:
 
-  - name: Launch 3 ngix pods
-    command: "kubectl run nginx --image=nginx --port=80 --replicas=3"
+  - name: Launch 2 nginx pods
+    command: "kubectl run nginx --image=nginx --port=80 --replicas=2"
 
   - name: Expose nginx
     command: "kubectl expose deployment nginx --type NodePort"

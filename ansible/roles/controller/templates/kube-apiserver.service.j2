@@ -3,7 +3,7 @@ Description=Kubernetes API Server
 Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 
 [Service]
-ExecStart=/usr/bin/kube-apiserver \
+ExecStart=/home/core/bin/kube-apiserver \
   --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota \
   --advertise-address={{ ansible_eth0.ipv4.address }} \
   --allow-privileged=true \

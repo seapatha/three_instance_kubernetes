@@ -8,17 +8,17 @@ variable default_keypair_public_key {
 
 variable default_keypair_name {
   description = "Name of the KeyPair used for all nodes"
-  default = "k8s-terraform-ansible-sample"
+  default = "three_instance_kubernetes"
 }
 
 variable vpc_name {
   description = "Name of the VPC"
-  default = "kubernetes"
+  default = "3ik"
 }
 
 variable elb_name {
   description = "Name of the ELB for Kubernetes API"
-  default = "kubernetes"
+  default = "3ik"
 }
 
 variable owner {
