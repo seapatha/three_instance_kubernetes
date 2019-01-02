@@ -1,4 +1,4 @@
-# APPENDIX
+# Release Notes
 
 ## Terraform
 
