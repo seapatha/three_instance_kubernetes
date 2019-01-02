@@ -9,7 +9,7 @@
     "${master0_dns}",
     "${worker0_ip}",
     "${worker0_dns}",
-    "{$worker1_ip}",
+    "${worker1_ip}",
     "${worker1_dns}",
     "${kubernetes_api_elb_dns_name}",
     "127.0.0.1"
@@ -20,10 +20,10 @@
   },
   "names": [
     {
-      "C": "UK",
-      "L": "London",
-      "O": "OpenCredo",
-      "OU": "Cluster"
+      "C": "US",
+      "L": "San Francisco",
+      "O": "3IK",
+      "OU": "Kubernetes"
     }
   ]
 }

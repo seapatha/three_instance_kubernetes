@@ -15,8 +15,8 @@ As a derived work, this project builds on prior art in the field, namely [Kubern
 
 
 - AWS VPC
-- 3 EC2 instances for HA Kubernetes Control Plane: Kubernetes API, Scheduler and Controller Manager
-- 3 EC2 instances for *etcd* cluster
+- 1 EC2 instances for HA Kubernetes Control Plane: Kubernetes API, Scheduler and Controller Manager
+- 1 EC2 instances for *etcd* cluster
 - 3 EC2 instances as Kubernetes Workers (aka Minions or Nodes)
 - Kubenet Pod networking (using CNI)
 - HTTPS between components and control API

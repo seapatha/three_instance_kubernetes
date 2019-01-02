@@ -10,7 +10,6 @@
   connection: local
 
   vars:
-    kubernetes_api_endpoint: "{{ groups['master'][0] }}"
     kubernetes_api_endpoint_port: 6443
     kubernetes_cluster_name: "three_instance_kubernetes"
     certificate_path: "{{ playbook_dir }}/../cert"
