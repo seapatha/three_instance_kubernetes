@@ -28,22 +28,22 @@
 - name: Download docker binaries
   get_url:
     url: "{{ docker_download_url }}"
-    dest: "/usr/local/src"
+    dest: "/tmp"
     # TODO Add hash check
   become: true
 
 - name: Unpack docker binaries
   unarchive:
     copy: no
-    src: "/usr/local/src/{{ docker_package_file }}"
-    dest: "/usr/local/src/"
-    creates: "/local/src/docker/docker"
+    src: "/tmp/{{ docker_package_file }}"
+    dest: "/tmp"
+    creates: "/tmp/docker/docker"
   become: true
 
 - name: Copy docker binaries
   copy:
     remote_src: true
-    src: "/usr/local/src/docker/{{ item }}"
+    src: "/tmp/docker/{{ item }}"
     dest: /home/core/bin
     mode: 0755
   with_items: # Remote-to-remote copy doesn't support file glob yet
@@ -77,14 +77,14 @@
 - name: Download CNI binaries
   get_url:
     url: "{{ cni_download_url }}"
-    dest: "/usr/local/src"
+    dest: "/tmp"
     # TODO Add hash check
   become: true
 
 - name: Unpack CNI binaries
   unarchive:
     copy: no
-    src: "/usr/local/src/{{ cni_package_file }}"
+    src: "/tmp/{{ cni_package_file }}"
     dest: "/opt/cni/"
     creates: "/opt/cni/bin/cnitool"
   become: true

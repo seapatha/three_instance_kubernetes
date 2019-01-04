@@ -1,5 +1,5 @@
 ---
-# Python installation on CoreOS
+# Python and PIP installation on CoreOS
 - hosts: all
   gather_facts: no
   tasks: 
@@ -7,7 +7,11 @@
        args: 
          executable: /bin/bash
        raw: |
+         # basic setup
          PYPY_VERSION=5.10.1
+         mkdir -p $HOME/bin
+
+         # Pypy download, install, and setup
          wget -O - https://bitbucket.org/pypy/pypy/downloads/pypy3-v$PYPY_VERSION-linux64.tar.bz2 |tar -xjf -
          mv -n pypy3-v$PYPY_VERSION-linux64 pypy
          mkdir -p pypy/lib
@@ -17,9 +21,16 @@
                 libncurses_version=6
          fi
          ln -snf /lib64/libncurses.so.$libncurses_version $HOME/pypy/lib/libtinfo.so.5
-         mkdir -p $HOME/bin
          echo LD_LIBRARY_PATH=$HOME/pypy/lib:$LD_LIBRARY_PATH exec $HOME/pypy/bin/pypy3 "\$@" > $HOME/bin/python
          chmod +x $HOME/bin/python
-         $HOME/bin/python --version
+         
+         # pip download, install, and setup 
+         # borrowed from https://gist.github.com/TLmaK0/fcd90279d7cb903b8f53a3de182480ee 
+         if [ ! -f /tmp/get-pip.py ]; then
+                wget https://bootstrap.pypa.io/get-pip.py -P /tmp
+         fi
+         $HOME/bin/python /tmp/get-pip.py 
+         echo LD_LIBRARY_PATH=$HOME/pypy/lib:$LD_LIBRARY_PATH exec $HOME/pypy/bin/pip "\$@" > $HOME/bin/pip
+         chmod +x $HOME/bin/pip
        ignore_errors: True
-     - name: Install 
+
