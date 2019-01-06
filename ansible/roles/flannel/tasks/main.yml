@@ -1,0 +1,21 @@
+---
+- name: Create Flannel config directories
+  file: path=/etc/flannel state=directory
+  become: true
+
+- name: Create Docker systemd directory
+  file: path=/etc/systemd/system/docker.service.d state=directory
+
+- name: Upload Flannel options
+  template:
+    src: options.env.j2
+    dest: /etc/flannel/options.env
+    mode: 0644
+  become: true
+
+- name: Enforce Flannel options with systemd
+  copy: 
+    src: 
+    /etc/systemd/system/docker.service.d/40-flannel.conf
+
+

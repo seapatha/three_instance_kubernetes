@@ -7,9 +7,9 @@
   roles:
     - common
     - etcd
-    - controller
+#- controller
 
-- hosts: worker
-  roles:
-    - common
-    - worker
+#- hosts: worker
+#roles:
+#- common
+#- worker

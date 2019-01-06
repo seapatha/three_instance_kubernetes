@@ -4,13 +4,13 @@
 ####################
 
 - name: Create kubernetes data dir
-  file: path=/var/lib/kubernetes state=directory
+  file: path=/etc/ssl/kubernetes state=directory
   become: true
 
 - name: Copy certificates
   copy:
     src: "{{ playbook_dir }}/../cert/{{ item }}"
-    dest: /var/lib/kubernetes
+    dest: /etc/ssl/kubernetes
     owner: root
     group: root
     mode: 0644
